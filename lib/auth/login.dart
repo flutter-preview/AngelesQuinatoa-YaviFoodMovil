@@ -33,7 +33,7 @@ class _loginState extends State<login> {
             child: CircleAvatar(
               radius: 100.0,
               backgroundColor: Color.fromARGB(255, 239, 152, 71),
-              backgroundImage: AssetImage('../images/logo.jpg'),
+              backgroundImage: AssetImage('images/logo.jpg'),
             ),
           ),
           Center(

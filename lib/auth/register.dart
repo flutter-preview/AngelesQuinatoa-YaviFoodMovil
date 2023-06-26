@@ -36,7 +36,7 @@ class _RegisterState extends State<Register> {
               child: CircleAvatar(
                   radius: 100.0,
                   backgroundColor: Colors.indigoAccent,
-                  backgroundImage: AssetImage('images/auth.jpg'))),
+                  backgroundImage: AssetImage('images/food-1.jpg'))),
           Text('Register',
               style: TextStyle(fontFamily: 'cursive', fontSize: 50.0)),
           SizedBox(

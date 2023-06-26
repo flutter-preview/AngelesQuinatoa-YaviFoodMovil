@@ -57,12 +57,12 @@ class _homeState extends State<homePages> {
 
 class Screen1 extends StatelessWidget {
   final List<Product> products = [
-    Product(name: 'Producto 1', price: '\$10', image: '../images/food-1.jpg'),
-    Product(name: 'Producto 2', price: '15.00', image: '../images/food-2.jpg'),
-    Product(name: 'Producto 3', price: '12.50', image: '../images/food-3.jpg'),
-    Product(name: 'Producto 4', price: '120.50', image: '../images/food-4.jpg'),
-    Product(name: 'Producto 5', price: '1.50', image: '../images/food-5.jpg'),
-    Product(name: 'Producto 6', price: '13.50', image: '../images/food-6.jpg'), 
+    Product(name: 'Producto 1', price: '\$10', image: 'images/food-1.jpg'),
+    Product(name: 'Producto 2', price: '15.00', image: 'images/food-2.jpg'),
+    Product(name: 'Producto 3', price: '12.50', image: 'images/food-3.jpg'),
+    Product(name: 'Producto 4', price: '120.50', image: 'images/food-4.jpg'),
+    Product(name: 'Producto 5', price: '1.50', image: 'images/food-5.jpg'),
+    Product(name: 'Producto 6', price: '13.50', image: '/images/food-6.jpg'), 
     // Agrega las demás entradas de productos con sus respectivas imágenes
   ];
 @override
@@ -71,34 +71,38 @@ Widget build(BuildContext context) {
     color: Colors.white,
     child: Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Row(
-          children: [
-            Text(
-              'Yavi',
-              style: TextStyle(
-                color: Colors.black, // Cambio del color del texto a negro
-                fontFamily: 'Lobster',
-                fontSize: 24.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              'Food',
-              style: TextStyle(
-                color: Color.fromARGB(255, 232, 153, 88), // Cambio del color del texto a plomo más oscuro
-                fontSize: 24.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
+  backgroundColor: Colors.white,
+  title: Center(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          'Yavi',
+          style: TextStyle(
+            color: Colors.black, // Cambio del color del texto a negro
+            fontFamily: 'Lobster',
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-      ),
+        Text(
+          'Food',
+          style: TextStyle(
+            color: Color.fromARGB(255, 232, 153, 88), // Cambio del color del texto a plomo más oscuro
+            fontFamily: 'Lobster',
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    ),
+  ),
+),
       body: Container(
         width: double.infinity,
         height: double.infinity,
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 80.5),
+          padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.5),
           children: [
             Container(
               decoration: BoxDecoration(
@@ -139,7 +143,7 @@ Widget build(BuildContext context) {
             SizedBox(height: 20.0),
             GridView.count(
               shrinkWrap: true,
-              crossAxisCount: 3,
+              crossAxisCount: 2,
               crossAxisSpacing: 10.0,
               mainAxisSpacing: 30.0,
               children: products.map((product) {
@@ -227,7 +231,7 @@ Widget build(BuildContext context) {
                         margin: EdgeInsets.only(top: 6.0),
                         alignment: Alignment.centerLeft,
                         child: Padding(
-                          padding: EdgeInsets.only(left: 6.0),
+                          padding: EdgeInsets.only(left: 10.0),
                           child: Text(
                             ' \$20',
                             style: TextStyle(
