@@ -251,17 +251,6 @@ class Screen1 extends StatelessWidget {
                             ),
                           ),
                         ),
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            primary: Color.fromARGB(255, 232, 153, 88),
-                          ),
-                          child: Text('Ver Platillo'),
-                          onPressed: () {
-                            Navigator.push(
-                              context, MaterialPageRoute(builder: (context)=> Screen4()),
-                            );
-                          },
-                        ),
                       ],
                     ),
                   );
@@ -343,168 +332,36 @@ class _Screen2State extends State<Screen2> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              ],
-            ),
-          ),
-        ),
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.all(70.0),
-            child: Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Color.fromARGB(255, 232, 153, 88),
-                      width: 2.0,
-                    ),
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 150.0,
-                          height: 150.0,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              image: AssetImage('images/food-1.jpg'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 20.0),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Sopa',
-                                style: TextStyle(
-                                  fontSize: 24.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                              SizedBox(height: 10.0),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  IconButton(
-                                    icon: Icon(Icons.remove),
-                                    onPressed: decrement,
-                                  ),
-                                  SizedBox(width: 4.0),
-                                  Container(
-                                    width: 40.0,
-                                    child: TextField(
-                                      controller: _controller,
-                                      keyboardType: TextInputType.number,
-                                      textAlign: TextAlign.center,
-                                      onChanged: (value) {
-                                        setState(() {
-                                          valor = int.tryParse(value) ?? 1;
-                                        });
-                                      },
-                                      decoration: InputDecoration(
-                                        border: OutlineInputBorder(),
-                                        contentPadding: EdgeInsets.symmetric(
-                                          vertical: 8.0,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 4.0),
-                                  IconButton(
-                                    icon: Icon(Icons.add),
-                                    onPressed: increment,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 10.0),
-                              Text(
-                                'Precio: \$99.99',
-                                style: TextStyle(
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                              SizedBox(height: 20.0),
-                              ElevatedButton(
-                                onPressed: () {
-                                  // Acción para eliminar el producto
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Colors.orange,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0),
-                                  ),
-                                  minimumSize: Size(120.0, 40.0),
-                                ),
-                                child: Text(
-                                  'Eliminar',
-                                  style: TextStyle(fontSize: 18.0),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                SizedBox(height: 10.0),
+                Row(
+                  children: [
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star_half, color: Colors.yellow),
+                  ],
+                ),
+                SizedBox(height: 10.0),
+                Text(
+                  'Precio: \$99.99',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(height: 20.0),
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Color.fromARGB(255, 232, 153, 88),
-                      width: 2.0,
+                ElevatedButton(
+                  onPressed: () {
+                    // Acción para eliminar el producto
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
-                    borderRadius: BorderRadius.circular(20.0),
                   ),
-                  padding: EdgeInsets.all(20.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Count: 2',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 10.0),
-                      Text(
-                        'Price: \$99.99',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 20.0),
-                      ElevatedButton(
-                        onPressed: () {
-                          // Acción para pasar por la caja
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Color.fromARGB(255, 232, 153, 88),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          minimumSize: Size(140.0, 20.0),
-                        ),
-                        child: Text(
-                          'Pagar',
-                          style: TextStyle(fontSize: 18.0),
-                        ),
-                      ),
-                    ],
-                  ),
+                  child: Text('Eliminar Producto'),
                 ),
               ],
             ),
@@ -724,133 +581,6 @@ class Screen3 extends StatelessWidget {
     );
   }
 }
-
-class Screen4 extends StatelessWidget {
-  final List<FoodItem> foodItems = [
-    FoodItem(
-      image: 'images/food-1.jpg',
-      description: 'Pizza Margherita',
-      price: '12.99',
-    ),
-    FoodItem(
-      image: 'images/food-2.jpg',
-      description: 'Hamburguesa clásica',
-      price: '8.99',
-    ),
-    // Agrega más elementos aquí
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Yavi',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Lobster',
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                'Food',
-                style: TextStyle(
-                  color: Color.fromARGB(255, 232, 153, 88),
-                  fontFamily: 'Lobster',
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      body: Container(
-        color: Colors.white,
-        child: ListView.builder(
-          itemCount: foodItems.length,
-          itemBuilder: (context, index) {
-            return Center(
-              child: Card(
-                margin: EdgeInsets.all(40.0),
-                shadowColor: Colors.grey,
-                elevation: 5.0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        radius: 50.0,
-                        backgroundImage: AssetImage(foodItems[index].image),
-                      ),
-                      SizedBox(height: 20.0),
-                      Text(
-                        foodItems[index].description,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 10.0),
-                      Text(
-                        '\$${foodItems[index].price}',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 20.0),
-                      ElevatedButton(
-                        onPressed: () {
-                          // Agregar lógica para agregar al carrito
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                        ),
-                        child: Text(
-                          'Agregar al carrito',
-                          style: TextStyle(fontSize: 16.0),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class FoodItem {
-  final String image;
-  final String description;
-  final String price;
-
-  FoodItem({
-    required this.image,
-    required this.description,
-    required this.price,
-  });
-}
-
-
-
 class RoundedButtonWithIcon extends StatelessWidget {
   final IconData icon;
   final String label;
