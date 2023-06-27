@@ -266,45 +266,72 @@ class Screen1 extends StatelessWidget {
 class Screen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Búsqueda'),
-        ),
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: <Color>[
-                Color.fromARGB(255, 0, 255, 225),
-                Color.fromARGB(0, 180, 177, 3)
-              ],
-              begin: Alignment.bottomRight,
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Eliminar Producto'),
+      ),
+      body: Center(
+        child: Card(
+          elevation: 5.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
           ),
-          padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 300.5),
-          child: Column(
-            children: [
-              TextField(
-                decoration: InputDecoration(
-                  icon: Icon(Icons.search),
-                  suffixIcon: Icon(Icons.clear),
-                  hintText: 'Buscar',
-                  labelText: 'Búsqueda',
-                  helperText: 'Ingrese su consulta',
+          margin: EdgeInsets.all(20.0),
+          child: Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset('../images/food-1.jpg'),
+                SizedBox(height: 20.0),
+                Text(
+                  'Descripción del producto',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                autofocus: true,
-                keyboardType: TextInputType.text,
-                obscureText: false,
-              ),
-            ],
+                SizedBox(height: 10.0),
+                Row(
+                  children: [
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star_half, color: Colors.yellow),
+                  ],
+                ),
+                SizedBox(height: 10.0),
+                Text(
+                  'Precio: \$99.99',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 20.0),
+                ElevatedButton(
+                  onPressed: () {
+                    // Acción para eliminar el producto
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                  ),
+                  child: Text('Eliminar Producto'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
+
+
 
 class Screen3 extends StatelessWidget {
   @override
