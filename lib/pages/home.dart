@@ -250,6 +250,12 @@ class Screen1 extends StatelessWidget {
                             ),
                           ),
                         ),
+                        TextButton(
+                          child: Text('Ver Platillo'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
                       ],
                     ),
                   );
@@ -263,48 +269,197 @@ class Screen1 extends StatelessWidget {
   }
 }
 
-class Screen2 extends StatelessWidget {
+class Screen2 extends StatefulWidget {
+  @override
+  _Screen2State createState() => _Screen2State();
+}
+
+class _Screen2State extends State<Screen2> {
+  late TextEditingController _controller;
+  int valor = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: valor.toString());
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void increment() {
+    setState(() {
+      if (valor < 5) {
+        valor++;
+        _controller.text = valor.toString();
+      }
+    });
+  }
+
+  void decrement() {
+    setState(() {
+      if (valor > 1) {
+        valor--;
+        _controller.text = valor.toString();
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Búsqueda'),
-        ),
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: <Color>[
-                Color.fromARGB(255, 0, 255, 225),
-                Color.fromARGB(0, 180, 177, 3)
+          backgroundColor: Colors.white,
+          title: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Yavi',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'Lobster',
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  'Food',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 232, 153, 88),
+                    fontFamily: 'Lobster',
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
-              begin: Alignment.bottomRight,
             ),
           ),
-          padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 300.5),
-          child: Column(
-            children: [
-              TextField(
-                decoration: InputDecoration(
-                  icon: Icon(Icons.search),
-                  suffixIcon: Icon(Icons.clear),
-                  hintText: 'Buscar',
-                  labelText: 'Búsqueda',
-                  helperText: 'Ingrese su consulta',
+        ),
+        body: Center(
+          child: Padding(
+            padding: EdgeInsets.all(80.0),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Color.fromARGB(255, 232, 153, 88),
+                  width: 2.0,
                 ),
-                autofocus: true,
-                keyboardType: TextInputType.text,
-                obscureText: false,
+                borderRadius: BorderRadius.circular(20.0),
               ),
-            ],
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 150.0,
+                      height: 150.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage('images/food-1.jpg'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 20.0),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Sopa',
+                            style: TextStyle(
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(height: 10.0),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                icon: Icon(Icons.remove),
+                                onPressed: decrement,
+                              ),
+                              SizedBox(width: 10.0),
+                              Container(
+                                width: 40.0,
+                                child: TextField(
+                                  controller: _controller,
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      valor = int.tryParse(value) ?? 1;
+                                    });
+                                  },
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    contentPadding: EdgeInsets.symmetric(
+                                      vertical: 8.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 10.0),
+                              IconButton(
+                                icon: Icon(Icons.add),
+                                onPressed: increment,
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 10.0),
+                          Text(
+                            'Precio: \$99.99',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(height: 20.0),
+                          Center(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                // Acción para eliminar el producto
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.red,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Eliminar Producto',
+                                  style: TextStyle(fontSize: 18.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ),
     );
   }
 }
+
 
 class Screen3 extends StatelessWidget {
   @override
@@ -511,6 +666,7 @@ class Screen3 extends StatelessWidget {
     );
   }
 }
+
 class RoundedButtonWithIcon extends StatelessWidget {
   final IconData icon;
   final String label;
