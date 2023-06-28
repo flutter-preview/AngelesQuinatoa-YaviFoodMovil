@@ -15,6 +15,7 @@ class _homeState extends State<homePages> {
     Screen1(),
     Screen2(),
     Screen3(),
+    Screen4(),
   ];
 
   @override
@@ -256,7 +257,9 @@ class Screen1 extends StatelessWidget {
                           ),
                           child: Text('Ver Platillo'),
                           onPressed: () {
-                            Navigator.of(context).pop();
+                            Navigator.push(
+                              context, MaterialPageRoute(builder: (context)=> Screen4()),
+                            );
                           },
                         ),
                       ],
@@ -346,7 +349,7 @@ class _Screen2State extends State<Screen2> {
         ),
         body: Center(
           child: Padding(
-            padding: EdgeInsets.all(80.0),
+            padding: EdgeInsets.all(70.0),
             child: Column(
               children: [
                 Container(
@@ -395,7 +398,7 @@ class _Screen2State extends State<Screen2> {
                                     icon: Icon(Icons.remove),
                                     onPressed: decrement,
                                   ),
-                                  SizedBox(width: 10.0),
+                                  SizedBox(width: 4.0),
                                   Container(
                                     width: 40.0,
                                     child: TextField(
@@ -415,7 +418,7 @@ class _Screen2State extends State<Screen2> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(width: 10.0),
+                                  SizedBox(width: 4.0),
                                   IconButton(
                                     icon: Icon(Icons.add),
                                     onPressed: increment,
@@ -493,7 +496,7 @@ class _Screen2State extends State<Screen2> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
-                          minimumSize: Size(160.0, 40.0),
+                          minimumSize: Size(140.0, 20.0),
                         ),
                         child: Text(
                           'Pagar',
@@ -721,6 +724,132 @@ class Screen3 extends StatelessWidget {
     );
   }
 }
+
+class Screen4 extends StatelessWidget {
+  final List<FoodItem> foodItems = [
+    FoodItem(
+      image: 'images/food-1.jpg',
+      description: 'Pizza Margherita',
+      price: '12.99',
+    ),
+    FoodItem(
+      image: 'images/food-2.jpg',
+      description: 'Hamburguesa clásica',
+      price: '8.99',
+    ),
+    // Agrega más elementos aquí
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Yavi',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'Lobster',
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'Food',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 232, 153, 88),
+                  fontFamily: 'Lobster',
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      body: Container(
+        color: Colors.white,
+        child: ListView.builder(
+          itemCount: foodItems.length,
+          itemBuilder: (context, index) {
+            return Center(
+              child: Card(
+                margin: EdgeInsets.all(40.0),
+                shadowColor: Colors.grey,
+                elevation: 5.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 50.0,
+                        backgroundImage: AssetImage(foodItems[index].image),
+                      ),
+                      SizedBox(height: 20.0),
+                      Text(
+                        foodItems[index].description,
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 10.0),
+                      Text(
+                        '\$${foodItems[index].price}',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 20.0),
+                      ElevatedButton(
+                        onPressed: () {
+                          // Agregar lógica para agregar al carrito
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                        ),
+                        child: Text(
+                          'Agregar al carrito',
+                          style: TextStyle(fontSize: 16.0),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class FoodItem {
+  final String image;
+  final String description;
+  final String price;
+
+  FoodItem({
+    required this.image,
+    required this.description,
+    required this.price,
+  });
+}
+
+
 
 class RoundedButtonWithIcon extends StatelessWidget {
   final IconData icon;
