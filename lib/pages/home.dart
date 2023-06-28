@@ -121,7 +121,6 @@ class Screen1 extends StatelessWidget {
                           hintText: 'Busca tu platillo',
                           border: InputBorder.none,
                         ),
-                        autofocus: true,
                         keyboardType: TextInputType.text,
                         obscureText: false,
                       ),
@@ -146,7 +145,7 @@ class Screen1 extends StatelessWidget {
               SizedBox(height: 20.0),
               GridView.count(
                 shrinkWrap: true,
-                crossAxisCount: 2,
+                crossAxisCount: 1,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 30.0,
                 children: products.map((product) {
