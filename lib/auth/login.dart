@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/auth/register.dart';
 import 'package:project/pages/home.dart';
+import 'package:project/services/login.api.dart';
 
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
@@ -12,11 +13,14 @@ class login extends StatefulWidget {
 class _loginState extends State<login> {
   bool rememberPassword = false;
   bool isPasswordVisible = false;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-    // Implement some initialization operations here.
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -60,6 +64,7 @@ class _loginState extends State<login> {
                   ),
                   child: TextField(
                     enableInteractiveSelection: false,
+                    controller: _emailController,
                     textCapitalization: TextCapitalization.characters,
                     decoration: InputDecoration(
                       hintText: 'E-mail',
@@ -81,6 +86,7 @@ class _loginState extends State<login> {
                   ),
                   child: TextField(
                     enableInteractiveSelection: false,
+                    controller: _passwordController,
                     obscureText: !isPasswordVisible,
                     textCapitalization: TextCapitalization.characters,
                     decoration: InputDecoration(
@@ -119,16 +125,23 @@ class _loginState extends State<login> {
                       rememberPassword = value!;
                     });
                   },
-                  activeColor: Color(0xFFFFA07A),
-                  controlAffinity: ListTileControlAffinity.leading,
                 ),
                 const SizedBox(height: 16.0),
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => homePages()),
-                    );
+                  onPressed: () async {
+                    var token = await ApiService.loginUser(_emailController.text, _passwordController.text);
+                    if (token != null) {
+                      // El inicio de sesión fue exitoso, puedes hacer algo con el token
+                      print('Token de autenticación: $token');
+                      // Navegar a la página de inicio o realizar otras acciones necesarias
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => homePages()),
+                      );
+                    } else {
+                      // El inicio de sesión falló, puedes mostrar un mensaje de error
+                      print('Inicio de sesión fallido');
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Color(0xFFFFA07A),
@@ -136,21 +149,19 @@ class _loginState extends State<login> {
                   child: Text('Login'),
                 ),
                 const SizedBox(height: 16.0),
-                Container(
-                  alignment: Alignment.center,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Register()),
-                      );
-                    },
-                    child: Text(
-                      '¿No tienes cuenta? Regístrate',
-                      style: TextStyle(
-                        color: Colors.black,
-                        decoration: TextDecoration.none,
-                      ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Register()),
+                    );
+                  },
+                  child: Text(
+                    'No tienes una cuenta? Regístrate',
+                    style: TextStyle(
+                      color: Color(0xFFFFA07A),
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
