@@ -724,6 +724,7 @@ class Screen3 extends StatelessWidget {
   }
 }
 
+
 class Screen4 extends StatelessWidget {
   final List<FoodItem> foodItems = [
     FoodItem(
@@ -765,6 +766,78 @@ class Screen4 extends StatelessWidget {
                   fontSize: 24.0,
                   fontWeight: FontWeight.bold,
                 ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      drawer: Drawer(
+        child: Container(
+          color: Colors.white, 
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 50.0,
+                      backgroundImage: AssetImage('images/product1.jpg'),
+                    ),
+                    SizedBox(height: 10.0),
+                    Text(
+                      'Me alegra tenerte aquí',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.home, color: Colors.black),
+                title: Text(
+                  'Inicio',
+                  style: TextStyle(color: Colors.black),
+                ),
+                onTap: () {
+                  // Lógica para manejar la selección del menú de Inicio
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.shopping_cart, color: Colors.black),
+                title: Text(
+                  'Carrito',
+                  style: TextStyle(color: Colors.black),
+                ),
+                onTap: () {
+                  // Lógica para manejar la selección del menú de Carrito
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.person, color: Colors.black),
+                title: Text(
+                  'Perfil',
+                  style: TextStyle(color: Colors.black),
+                ),
+                onTap: () {
+                  // Lógica para manejar la selección del menú de Perfil
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.logout, color: Colors.black),
+                title: Text(
+                  'Salir',
+                  style: TextStyle(color: Colors.black),
+                ),
+                onTap: () {
+                  // Lógica para manejar la selección del menú de Salir
+                },
               ),
             ],
           ),
@@ -847,6 +920,7 @@ class FoodItem {
     required this.price,
   });
 }
+
 
 
 
