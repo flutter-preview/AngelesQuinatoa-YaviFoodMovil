@@ -23,147 +23,141 @@ class _loginState extends State<login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
-        padding: EdgeInsets.symmetric(
-          horizontal: 30.0,
-          vertical: 50.0,
-        ),
-        children: <Widget>[
-          Center(
-            child: CircleAvatar(
-              radius: 100.0,
-              backgroundColor: Color.fromARGB(255, 239, 152, 71),
-              backgroundImage: AssetImage('../images/principal.jpg'),
-            ),
-          ),
-          Center(
-            child: Align(
-              alignment: Alignment.center,
-              child: Text(
-                'YaviFood',
-                style: TextStyle(
-                  fontFamily: 'cursive',
-                  fontSize: 50.0,
-                ),
-              ),
-            ),
-          ),
-          Text(
-            'Login',
-            style: TextStyle(fontFamily: 'cursive', fontSize: 20.0),
-          ),
-          SizedBox(
-            width: 160.0,
-            height: 15.0,
-            child: Divider(color: Color.fromARGB(255, 232, 153, 88)),
-          ),
-          Theme(
-            data: ThemeData(
-              primaryColor: Color(0xFFFFA07A),
-              colorScheme: ColorScheme.fromSwatch().copyWith(
-                primary: Color(0xFFFFA07A),
-              ),
-            ),
-            child: TextField(
-              enableInteractiveSelection: false,
-              textCapitalization: TextCapitalization.characters,
-              decoration: InputDecoration(
-                hintText: 'E-mail',
-                labelText: 'E-mail',
-                suffixIcon: Icon(Icons.alternate_email),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: 25.0),
-          Theme(
-            data: ThemeData(
-              primaryColor: Color(0xFFFFA07A),
-              colorScheme: ColorScheme.fromSwatch().copyWith(
-                primary: Color(0xFFFFA07A),
-              ),
-            ),
-            child: TextField(
-              enableInteractiveSelection: false,
-              obscureText: !isPasswordVisible,
-              textCapitalization: TextCapitalization.characters,
-              decoration: InputDecoration(
-                hintText: 'Password',
-                labelText: 'Password',
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    isPasswordVisible ? Icons.visibility_off : Icons.visibility,
-                    color: Colors.grey,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 50.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Center(
+                  child: CircleAvatar(
+                    radius: 100.0,
+                    backgroundColor: Color.fromARGB(255, 239, 152, 71),
+                    backgroundImage: AssetImage('images/principal.jpg'),
                   ),
-                  onPressed: () {
+                ),
+                const SizedBox(height: 16.0),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'YaviFood',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Lobster',
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                Theme(
+                  data: ThemeData(
+                    primaryColor: Color(0xFFFFA07A),
+                    colorScheme: ColorScheme.fromSwatch().copyWith(
+                      primary: Color(0xFFFFA07A),
+                    ),
+                  ),
+                  child: TextField(
+                    enableInteractiveSelection: false,
+                    textCapitalization: TextCapitalization.characters,
+                    decoration: InputDecoration(
+                      hintText: 'E-mail',
+                      labelText: 'E-mail',
+                      suffixIcon: Icon(Icons.alternate_email),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                Theme(
+                  data: ThemeData(
+                    primaryColor: Color(0xFFFFA07A),
+                    colorScheme: ColorScheme.fromSwatch().copyWith(
+                      primary: Color(0xFFFFA07A),
+                    ),
+                  ),
+                  child: TextField(
+                    enableInteractiveSelection: false,
+                    obscureText: !isPasswordVisible,
+                    textCapitalization: TextCapitalization.characters,
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                      labelText: 'Password',
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          isPasswordVisible ? Icons.visibility_off : Icons.visibility,
+                          color: Colors.grey,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isPasswordVisible = !isPasswordVisible;
+                          });
+                        },
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                CheckboxListTile(
+                  title: Align(
+                    child: Text(
+                      'Recordar contraseña',
+                      style: TextStyle(
+                        color: rememberPassword ? Color(0xFFFFA07A) : Colors.black,
+                      ),
+                    ),
+                  ),
+                  value: rememberPassword,
+                  onChanged: (value) {
                     setState(() {
-                      isPasswordVisible = !isPasswordVisible;
+                      rememberPassword = value!;
                     });
                   },
+                  activeColor: Color(0xFFFFA07A),
+                  controlAffinity: ListTileControlAffinity.leading,
                 ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
+                const SizedBox(height: 16.0),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => homePages()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xFFFFA07A),
+                  ),
+                  child: Text('Login'),
                 ),
-              ),
+                const SizedBox(height: 16.0),
+                Container(
+                  alignment: Alignment.center,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Register()),
+                      );
+                    },
+                    child: Text(
+                      '¿No tienes cuenta? Regístrate',
+                      style: TextStyle(
+                        color: Colors.black,
+                        decoration: TextDecoration.none,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          CheckboxListTile(
-            contentPadding: EdgeInsets.symmetric(
-                horizontal: 16.0), // Ajusta el relleno horizontal
-            title: Align(
-              alignment: Alignment.center,
-              child: Text(
-                'Recordar contraseña',
-                style: TextStyle(
-                  color: rememberPassword ? Color(0xFFFFA07A) : Colors.black,
-                ),
-              ),
-            ),
-            value: rememberPassword,
-            onChanged: (value) {
-              setState(() {
-                rememberPassword = value!;
-              });
-            },
-            activeColor: Color(0xFFFFA07A),
-            controlAffinity: ListTileControlAffinity.leading,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => homePages()),
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              primary: Color(0xFFFFA07A),
-            ),
-            child: Text('Login'),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          Container(
-            alignment: Alignment.center,
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Register()),
-                );
-              },
-              child: Text(
-                '¿No tienes cuenta? Regístrate',
-                style: TextStyle(
-                  color: Colors.black, // Establece el color en negro
-                  decoration: TextDecoration.none,
-                ),
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
