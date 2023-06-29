@@ -145,7 +145,7 @@ class Screen1 extends StatelessWidget {
               SizedBox(height: 20.0),
               GridView.count(
                 shrinkWrap: true,
-                crossAxisCount: 1,
+                crossAxisCount: 2,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 30.0,
                 children: products.map((product) {
@@ -257,7 +257,9 @@ class Screen1 extends StatelessWidget {
                           child: Text('Ver Platillo'),
                           onPressed: () {
                             Navigator.push(
-                              context, MaterialPageRoute(builder: (context)=> Screen4()),
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Screen4()),
                             );
                           },
                         ),
@@ -273,7 +275,6 @@ class Screen1 extends StatelessWidget {
     );
   }
 }
-
 
 class Screen2 extends StatefulWidget {
   @override
@@ -316,37 +317,38 @@ class _Screen2State extends State<Screen2> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Yavi',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Lobster',
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
+    return Container(
+      color: Colors.white,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Yavi',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'Lobster',
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Text(
-                'Food',
-                style: TextStyle(
-                  color: Color.fromARGB(255, 232, 153, 88),
-                  fontFamily: 'Lobster',
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
+                Text(
+                  'Food',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 232, 153, 88),
+                    fontFamily: 'Lobster',
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Center(
+        body: Center(
           child: Padding(
             padding: EdgeInsets.all(70.0),
             child: Column(
@@ -446,7 +448,7 @@ class _Screen2State extends State<Screen2> {
                                   minimumSize: Size(120.0, 40.0),
                                 ),
                                 child: Text(
-                                  'Ir a Pagar',
+                                  'Eliminar',
                                   style: TextStyle(fontSize: 18.0),
                                 ),
                               ),
@@ -498,7 +500,7 @@ class _Screen2State extends State<Screen2> {
                           minimumSize: Size(140.0, 20.0),
                         ),
                         child: Text(
-                          'Ir a Pagar',
+                          'Pagar',
                           style: TextStyle(fontSize: 18.0),
                         ),
                       ),
@@ -513,7 +515,6 @@ class _Screen2State extends State<Screen2> {
     );
   }
 }
-
 
 class Screen3 extends StatelessWidget {
   @override
@@ -721,7 +722,6 @@ class Screen3 extends StatelessWidget {
   }
 }
 
-
 class Screen4 extends StatelessWidget {
   final List<FoodItem> foodItems = [
     FoodItem(
@@ -770,7 +770,7 @@ class Screen4 extends StatelessWidget {
       ),
       drawer: Drawer(
         child: Container(
-          color: Colors.white, 
+          color: Colors.white,
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -803,7 +803,10 @@ class Screen4 extends StatelessWidget {
                   style: TextStyle(color: Colors.black),
                 ),
                 onTap: () {
-                  // Lógica para manejar la selección del menú de Inicio
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Screen1()),
+                  );
                 },
               ),
               ListTile(
@@ -813,29 +816,37 @@ class Screen4 extends StatelessWidget {
                   style: TextStyle(color: Colors.black),
                 ),
                 onTap: () {
-                  // Lógica para manejar la selección del menú de Carrito
-                },
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Screen2()),
+                    );
+                }
               ),
               ListTile(
-                leading: Icon(Icons.person, color: Colors.black),
-                title: Text(
-                  'Perfil',
-                  style: TextStyle(color: Colors.black),
-                ),
-                onTap: () {
-                  // Lógica para manejar la selección del menú de Perfil
-                },
-              ),
+                  leading: Icon(Icons.person, color: Colors.black),
+                  title: Text(
+                    'Perfil',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Screen3()),
+                    );
+                  }
+                  ),
               ListTile(
-                leading: Icon(Icons.logout, color: Colors.black),
-                title: Text(
-                  'Salir',
-                  style: TextStyle(color: Colors.black),
-                ),
-                onTap: () {
-                  // Lógica para manejar la selección del menú de Salir
-                },
-              ),
+                  leading: Icon(Icons.logout, color: Colors.black),
+                  title: Text(
+                    'Salir',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => login()),
+                    );
+                  }),
             ],
           ),
         ),
@@ -917,9 +928,6 @@ class FoodItem {
     required this.price,
   });
 }
-
-
-
 
 class RoundedButtonWithIcon extends StatelessWidget {
   final IconData icon;
