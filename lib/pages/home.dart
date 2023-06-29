@@ -274,6 +274,7 @@ class Screen1 extends StatelessWidget {
   }
 }
 
+
 class Screen2 extends StatefulWidget {
   @override
   _Screen2State createState() => _Screen2State();
@@ -315,38 +316,37 @@ class _Screen2State extends State<Screen2> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Yavi',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'Lobster',
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Yavi',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'Lobster',
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
                 ),
-                Text(
-                  'Food',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 232, 153, 88),
-                    fontFamily: 'Lobster',
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+              ),
+              Text(
+                'Food',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 232, 153, 88),
+                  fontFamily: 'Lobster',
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-        body: Center(
+      ),
+      body: SingleChildScrollView(
+        child: Center(
           child: Padding(
             padding: EdgeInsets.all(70.0),
             child: Column(
@@ -446,7 +446,7 @@ class _Screen2State extends State<Screen2> {
                                   minimumSize: Size(120.0, 40.0),
                                 ),
                                 child: Text(
-                                  'Eliminar',
+                                  'Ir a Pagar',
                                   style: TextStyle(fontSize: 18.0),
                                 ),
                               ),
@@ -498,7 +498,7 @@ class _Screen2State extends State<Screen2> {
                           minimumSize: Size(140.0, 20.0),
                         ),
                         child: Text(
-                          'Pagar',
+                          'Ir a Pagar',
                           style: TextStyle(fontSize: 18.0),
                         ),
                       ),
@@ -513,9 +513,6 @@ class _Screen2State extends State<Screen2> {
     );
   }
 }
-
-
-
 
 
 class Screen3 extends StatelessWidget {
