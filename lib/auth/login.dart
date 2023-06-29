@@ -157,11 +157,10 @@ class _loginState extends State<login> {
                     );
                   },
                   child: Text(
-                    'No tienes una cuenta? Regístrate',
+                    'ㅤㅤㅤㅤㅤㅤㅤNo tienes una cuenta? Regístrate',
                     style: TextStyle(
-                      color: Color(0xFFFFA07A),
+                      color: Colors.black ,
                       fontSize: 16.0,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
