@@ -1046,124 +1046,129 @@ class Screen5 extends StatelessWidget {
           ),
         ),
       ),
-      body: Container(
-        color: Colors.white,
-        child: SingleChildScrollView(
+body: Container(
+  color: Colors.white,
+  child: SingleChildScrollView(
+    child: Column(
+      children: [
+        ListView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: foodItems.length,
+          itemBuilder: (context, index) {
+            return Center(
+              child: Card(
+                margin: EdgeInsets.all(40.0),
+                shadowColor: Colors.grey,
+                elevation: 5.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(50.0),
+                        child: Image.asset(
+                          foodItems[index].image,
+                          width: 100.0,
+                          height: 100.0,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      SizedBox(height: 20.0),
+                      Text(
+                        foodItems[index].description,
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 10.0),
+                      Text(
+                        '\$${foodItems[index].price}',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 20.0),
+                      ElevatedButton(
+                        onPressed: () {
+                          // Agregar lógica para agregar al carrito
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Color.fromARGB(255, 232, 153, 88),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                        ),
+                        child: Text(
+                          'Agregar al carrito',
+                          style: TextStyle(fontSize: 16.0),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+        SizedBox(height: 20.0),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             children: [
-              ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: foodItems.length,
-                itemBuilder: (context, index) {
-                  return Center(
-                    child: Card(
-                      margin: EdgeInsets.all(40.0),
-                      shadowColor: Colors.grey,
-                      elevation: 5.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(20.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              radius: 50.0,
-                              backgroundImage:
-                                  AssetImage(foodItems[index].image),
-                            ),
-                            SizedBox(height: 20.0),
-                            Text(
-                              foodItems[index].description,
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 10.0),
-                            Text(
-                              '\$${foodItems[index].price}',
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 20.0),
-                            ElevatedButton(
-                              onPressed: () {
-                                // Agregar lógica para agregar al carrito
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color.fromARGB(255, 232, 153, 88),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                              ),
-                              child: Text(
-                                'Agregar al carrito',
-                                style: TextStyle(fontSize: 16.0),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
+              Text(
+                'Selecciona la forma de pago:',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10.0),
+              ElevatedButton(
+                onPressed: () {
+                  showPaymentDialog(context); // Mostrar el diálogo de alerta
                 },
+                style: ElevatedButton.styleFrom(
+                  primary: Color.fromARGB(255, 232, 153, 88),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                ),
+                child: Text(
+                  'Pagar en línea',
+                  style: TextStyle(fontSize: 16.0),
+                ),
               ),
               SizedBox(height: 20.0),
-              Container(
-                margin: EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    Text(
-                      'Selecciona la forma de pago:',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 10.0),
-                    ElevatedButton(
-                      onPressed: () {
-                        showPaymentDialog(context); // Mostrar el diálogo de alerta
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 232, 153, 88),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                      ),
-                      child: Text(
-                        'Pagar en línea',
-                        style: TextStyle(fontSize: 16.0),
-                      ),
-                    ),
-                    SizedBox(height: 10.0),
-                    ElevatedButton(
-                      onPressed: () {
-                        showCashPaymentAlert(context); // Mostrar el diálogo de alerta para pagar en efectivo
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 232, 153, 88),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                      ),
-                      child: Text(
-                        'Pagar en efectivo',
-                        style: TextStyle(fontSize: 16.0),
-                      ),
-                    ),
-                  ],
+              ElevatedButton(
+                onPressed: () {
+                  showCashPaymentAlert(context); // Mostrar el diálogo de alerta para pagar en efectivo
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color.fromARGB(255, 232, 153, 88),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                ),
+                child: Text(
+                  'Pagar en efectivo',
+                  style: TextStyle(fontSize: 16.0),
                 ),
               ),
             ],
           ),
         ),
-      ),
+      ],
+    ),
+  ),
+),
+
     );
   }
 
@@ -1316,7 +1321,6 @@ class FoodItem {
     required this.price,
   });
 }
-//En este código, se ha agregado el método `showCashPaymentAlert` para mostrar un diálogo de alerta cuando se presiona el botón "Pagar en efectivo". El diálogo de alerta solicita al usuario que ingrese su dirección y muestra automáticamente el valor de $99,99. También se agrega el mensaje "Gracias por su compra" en el diálogo de alerta.
 
 
 
