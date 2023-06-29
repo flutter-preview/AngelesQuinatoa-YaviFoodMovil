@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project/auth/login.dart';
+import 'package:project/main.dart';
 
 class homePages extends StatefulWidget {
   const homePages({super.key});
@@ -492,7 +493,10 @@ class _Screen2State extends State<Screen2> {
                       SizedBox(height: 20.0),
                       ElevatedButton(
                         onPressed: () {
-                          // Acción para pasar por la caja
+                          Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Screen5()),
+                      );
                         },
                         style: ElevatedButton.styleFrom(
                           primary: Color.fromARGB(255, 232, 153, 88),
@@ -859,7 +863,7 @@ class Screen4 extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => login()),
+                      MaterialPageRoute(builder: (context) => MyApp()),
                     );
                   }),
             ],
@@ -910,8 +914,13 @@ class Screen4 extends StatelessWidget {
                         SizedBox(height: 20.0),
                         ElevatedButton(
                           onPressed: () {
-                            // Agregar lógica para agregar al carrito
+                            Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Screen2()),
+                      );
+
                           },
+                          
                           style: ElevatedButton.styleFrom(
                             primary: Colors.blue,
                             shape: RoundedRectangleBorder(
