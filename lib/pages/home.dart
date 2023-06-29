@@ -519,8 +519,6 @@ class _Screen2State extends State<Screen2> {
 }
 
 
-
->>>>>>> 4d249b1d36ffccead228dafa8d49946360814ec0
 class Screen3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -729,8 +727,6 @@ class Screen3 extends StatelessWidget {
   }
 }
 
-<<<<<<< HEAD
-=======
 class login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -741,7 +737,6 @@ class login extends StatelessWidget {
 
 
 
->>>>>>> 4d249b1d36ffccead228dafa8d49946360814ec0
 class Screen4 extends StatelessWidget {
   final List<FoodItem> foodItems = [
     FoodItem(
@@ -1195,8 +1190,6 @@ class FoodItem {
   });
 }
 
-
->>>>>>> 4d249b1d36ffccead228dafa8d49946360814ec0
 class RoundedButtonWithIcon extends StatelessWidget {
   final IconData icon;
   final String label;
