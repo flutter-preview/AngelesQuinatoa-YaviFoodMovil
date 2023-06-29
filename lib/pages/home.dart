@@ -18,7 +18,6 @@ class _homeState extends State<homePages> {
     Screen3(),
     Screen4(),
     Screen5(),
-
   ];
 
   @override
@@ -494,9 +493,9 @@ class _Screen2State extends State<Screen2> {
                       ElevatedButton(
                         onPressed: () {
                           Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Screen5()),
-                      );
+                            context,
+                            MaterialPageRoute(builder: (context) => Screen5()),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           primary: Color.fromARGB(255, 232, 153, 88),
@@ -521,7 +520,6 @@ class _Screen2State extends State<Screen2> {
     );
   }
 }
-
 
 class Screen3 extends StatelessWidget {
   @override
@@ -738,9 +736,6 @@ class login extends StatelessWidget {
   }
 }
 
-
-
-
 class Screen4 extends StatelessWidget {
   final List<FoodItem> foodItems = [
     FoodItem(
@@ -829,18 +824,17 @@ class Screen4 extends StatelessWidget {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.shopping_cart, color: Colors.black),
-                title: Text(
-                  'Carrito',
-                  style: TextStyle(color: Colors.black),
-                ),
-                onTap: () {
+                  leading: Icon(Icons.shopping_cart, color: Colors.black),
+                  title: Text(
+                    'Carrito',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => Screen2()),
                     );
-                }
-              ),
+                  }),
               ListTile(
                   leading: Icon(Icons.person, color: Colors.black),
                   title: Text(
@@ -852,8 +846,7 @@ class Screen4 extends StatelessWidget {
                       context,
                       MaterialPageRoute(builder: (context) => Screen3()),
                     );
-                  }
-                  ),
+                  }),
               ListTile(
                   leading: Icon(Icons.logout, color: Colors.black),
                   title: Text(
@@ -872,10 +865,13 @@ class Screen4 extends StatelessWidget {
       ),
       body: Container(
         color: Colors.white,
-        child: SingleChildScrollView( // Agregado: Envuelve el ListView.builder con SingleChildScrollView
+        child: SingleChildScrollView(
+          // Agregado: Envuelve el ListView.builder con SingleChildScrollView
           child: ListView.builder(
-            shrinkWrap: true, // Agregado: Para evitar desbordamiento en el contenido
-            physics: NeverScrollableScrollPhysics(), // Agregado: Para deshabilitar el desplazamiento del ListView.builder
+            shrinkWrap:
+                true, // Agregado: Para evitar desbordamiento en el contenido
+            physics:
+                NeverScrollableScrollPhysics(), // Agregado: Para deshabilitar el desplazamiento del ListView.builder
             itemCount: foodItems.length,
             itemBuilder: (context, index) {
               return Center(
@@ -915,14 +911,13 @@ class Screen4 extends StatelessWidget {
                         ElevatedButton(
                           onPressed: () {
                             Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Screen2()),
-                      );
-
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Screen2()),
+                            );
                           },
-                          
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.blue,
+                            primary: Color.fromARGB(255, 232, 153, 88),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
@@ -945,22 +940,8 @@ class Screen4 extends StatelessWidget {
   }
 }
 
-
-
 class Screen5 extends StatelessWidget {
-  final List<FoodItem> foodItems = [
-    FoodItem(
-      image: 'images/food-1.jpg',
-      description: 'Pizza Margherita',
-      price: '12.99',
-    ),
-    FoodItem(
-      image: 'images/food-2.jpg',
-      description: 'Hamburguesa clásica',
-      price: '8.99',
-    ),
-    // Agrega más elementos aquí
-  ];
+  List<FoodItem> foodItems = [];
 
   @override
   Widget build(BuildContext context) {
@@ -1115,7 +1096,7 @@ class Screen5 extends StatelessWidget {
                                 // Agregar lógica para agregar al carrito
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.blue,
+                                primary: Color.fromARGB(255, 232, 153, 88),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
@@ -1147,26 +1128,26 @@ class Screen5 extends StatelessWidget {
                     SizedBox(height: 10.0),
                     ElevatedButton(
                       onPressed: () {
-                        // Lógica para procesar el pago en línea con tarjeta
+                        showPaymentDialog(context); // Mostrar el diálogo de alerta
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
+                        primary: Color.fromARGB(255, 232, 153, 88),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                       ),
                       child: Text(
-                        'Pagar en línea con tarjeta',
+                        'Pagar en línea',
                         style: TextStyle(fontSize: 16.0),
                       ),
                     ),
                     SizedBox(height: 10.0),
                     ElevatedButton(
                       onPressed: () {
-                        // Lógica para procesar el pago en efectivo
+                        showCashPaymentAlert(context); // Mostrar el diálogo de alerta para pagar en efectivo
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
+                        primary: Color.fromARGB(255, 232, 153, 88),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
@@ -1185,6 +1166,143 @@ class Screen5 extends StatelessWidget {
       ),
     );
   }
+
+  void showPaymentDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Ingrese los datos de la tarjeta'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Número de tarjeta',
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(color: Color.fromARGB(255, 232, 153, 88)),
+                  ),
+                  labelStyle: TextStyle(
+                    color: Color.fromARGB(255, 232, 153, 88),
+                  ),
+                ),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Fecha de vencimiento',
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(color: Color.fromARGB(255, 232, 153, 88)),
+                  ),
+                  labelStyle: TextStyle(
+                    color: Color.fromARGB(255, 232, 153, 88),
+                  ),
+                ),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Código de seguridad',
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(color: Color.fromARGB(255, 232, 153, 88)),
+                  ),
+                  labelStyle: TextStyle(
+                    color: Color.fromARGB(255, 232, 153, 88),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                // Aquí puedes agregar la lógica para procesar el pago en línea con tarjeta
+                // ...
+                Navigator.of(context).pop(); // Cerrar el diálogo
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Color.fromARGB(255, 232, 153, 88),
+              ),
+              child: Text('Pagar'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Cerrar el diálogo
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Color.fromARGB(255, 232, 153, 88),
+              ),
+              child: Text('Cancelar'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showCashPaymentAlert(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Pagar en efectivo'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Ingrese su dirección:',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10.0),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Dirección',
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(color: Color.fromARGB(255, 232, 153, 88)),
+                  ),
+                  labelStyle: TextStyle(
+                    color: Color.fromARGB(255, 232, 153, 88),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.0),
+              Text(
+                'Valor: \$99,99',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10.0),
+              Text(
+                'Gracias por su compra',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Cerrar el diálogo
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Color.fromARGB(255, 232, 153, 88),
+              ),
+              child: Text('Aceptar'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
 
 class FoodItem {
@@ -1198,6 +1316,9 @@ class FoodItem {
     required this.price,
   });
 }
+//En este código, se ha agregado el método `showCashPaymentAlert` para mostrar un diálogo de alerta cuando se presiona el botón "Pagar en efectivo". El diálogo de alerta solicita al usuario que ingrese su dirección y muestra automáticamente el valor de $99,99. También se agrega el mensaje "Gracias por su compra" en el diálogo de alerta.
+
+
 
 class RoundedButtonWithIcon extends StatelessWidget {
   final IconData icon;
