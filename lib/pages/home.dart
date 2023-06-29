@@ -1186,6 +1186,7 @@ class Screen4 extends StatelessWidget {
                   },
                 ),
               ),
+<<<<<<< HEAD
               Divider(
                 color: Colors.transparent,
                 height: 1,
@@ -1196,6 +1197,9 @@ class Screen4 extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: ListTile(
+=======
+              ListTile(
+>>>>>>> c74711c0f51011af37188ea371789b8a4cf94d0d
                   leading: Icon(Icons.shopping_cart, color: Colors.black),
                   title: Text(
                     'Carrito',
@@ -1206,6 +1210,7 @@ class Screen4 extends StatelessWidget {
                       context,
                       MaterialPageRoute(builder: (context) => Screen2()),
                     );
+<<<<<<< HEAD
                   },
                 ),
               ),
@@ -1219,6 +1224,10 @@ class Screen4 extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: ListTile(
+=======
+                  }),
+              ListTile(
+>>>>>>> c74711c0f51011af37188ea371789b8a4cf94d0d
                   leading: Icon(Icons.person, color: Colors.black),
                   title: Text(
                     'Perfil',
@@ -1229,6 +1238,7 @@ class Screen4 extends StatelessWidget {
                       context,
                       MaterialPageRoute(builder: (context) => Screen3()),
                     );
+<<<<<<< HEAD
                   },
                 ),
               ),
@@ -1243,6 +1253,10 @@ class Screen4 extends StatelessWidget {
         
                 ),
                 child: ListTile(
+=======
+                  }),
+              ListTile(
+>>>>>>> c74711c0f51011af37188ea371789b8a4cf94d0d
                   leading: Icon(Icons.logout, color: Colors.black),
                   title: Text(
                     'Salir',
@@ -1336,6 +1350,10 @@ class Screen4 extends StatelessWidget {
     );
   }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> c74711c0f51011af37188ea371789b8a4cf94d0d
 class Screen5 extends StatelessWidget {
   List<FoodItem> foodItems = [];
 
@@ -1770,6 +1788,8 @@ class FoodItem {
     required this.price,
   });
 }
+
+
 
 class RoundedButtonWithIcon extends StatelessWidget {
   final IconData icon;
