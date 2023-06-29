@@ -16,6 +16,8 @@ class _homeState extends State<homePages> {
     Screen2(),
     Screen3(),
     Screen4(),
+    Screen5(),
+
   ];
 
   @override
@@ -145,7 +147,7 @@ class Screen1 extends StatelessWidget {
               SizedBox(height: 20.0),
               GridView.count(
                 shrinkWrap: true,
-                crossAxisCount: 1,
+                crossAxisCount: 2,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 30.0,
                 children: products.map((product) {
@@ -257,7 +259,9 @@ class Screen1 extends StatelessWidget {
                           child: Text('Ver Platillo'),
                           onPressed: () {
                             Navigator.push(
-                              context, MaterialPageRoute(builder: (context)=> Screen4()),
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Screen4()),
                             );
                           },
                         ),
@@ -515,9 +519,6 @@ class _Screen2State extends State<Screen2> {
 }
 
 
-
-
-
 class Screen3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -550,171 +551,173 @@ class Screen3 extends StatelessWidget {
           ),
         ),
       ),
-      body: Container(
-        color: Colors.white,
-        child: Center(
-          child: Card(
-            margin: EdgeInsets.all(40.0),
-            shadowColor: Colors.grey,
-            elevation: 5.0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 50.0,
-                    backgroundImage: AssetImage('../images/perfil.jpeg'),
-                  ),
-                  SizedBox(height: 20.0),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(
-                          color: Colors.grey.withOpacity(0.3),
-                          width: 1.0,
-                        ),
-                      ),
-                      elevation: 2.0,
-                      shadowColor: Colors.grey.withOpacity(0.5),
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.white,
+          child: Center(
+            child: Card(
+              margin: EdgeInsets.all(40.0),
+              shadowColor: Colors.grey,
+              elevation: 5.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 50.0,
+                      backgroundImage: AssetImage('../images/perfil.jpeg'),
                     ),
-                    child: Text(
-                      'Nombre: Estela Micaela',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 25.0),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(
-                          color: Colors.grey.withOpacity(0.3),
-                          width: 1.0,
-                        ),
-                      ),
-                      elevation: 2.0,
-                      shadowColor: Colors.grey.withOpacity(0.5),
-                    ),
-                    child: Text(
-                      'Apellidos: Roldos Montes',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 25.0),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(
-                          color: Colors.grey.withOpacity(0.3),
-                          width: 1.0,
-                        ),
-                      ),
-                      elevation: 2.0,
-                      shadowColor: Colors.grey.withOpacity(0.5),
-                    ),
-                    child: Text(
-                      'CI: 1234567987-6',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 25.0),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(
-                          color: Colors.grey.withOpacity(0.3),
-                          width: 1.0,
-                        ),
-                      ),
-                      elevation: 2.0,
-                      shadowColor: Colors.grey.withOpacity(0.5),
-                    ),
-                    child: Text(
-                      'Correo: estelaroldos2@gmail.com',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton.icon(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.green,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
+                    SizedBox(height: 20.0),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          side: BorderSide(
+                            color: Colors.grey.withOpacity(0.3),
+                            width: 1.0,
                           ),
                         ),
-                        icon: Icon(Icons.edit),
-                        label: Text(
-                          'Editar',
-                          style: TextStyle(fontSize: 16.0),
+                        elevation: 2.0,
+                        shadowColor: Colors.grey.withOpacity(0.5),
+                      ),
+                      child: Text(
+                        'Nombre: Estela Micaela',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
                         ),
                       ),
-                      ElevatedButton.icon(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    SizedBox(height: 25.0),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          side: BorderSide(
+                            color: Colors.grey.withOpacity(0.3),
+                            width: 1.0,
                           ),
                         ),
-                        icon: Icon(Icons.settings),
-                        label: Text(
-                          'Configuración',
-                          style: TextStyle(fontSize: 16.0),
+                        elevation: 2.0,
+                        shadowColor: Colors.grey.withOpacity(0.5),
+                      ),
+                      child: Text(
+                        'Apellidos: Roldos Montes',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
                         ),
                       ),
-                      ElevatedButton.icon(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => login()),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    SizedBox(height: 25.0),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          side: BorderSide(
+                            color: Colors.grey.withOpacity(0.3),
+                            width: 1.0,
                           ),
                         ),
-                        icon: Icon(Icons.logout),
-                        label: Text(
-                          'Salir',
-                          style: TextStyle(fontSize: 16.0),
+                        elevation: 2.0,
+                        shadowColor: Colors.grey.withOpacity(0.5),
+                      ),
+                      child: Text(
+                        'CI: 1234567987-6',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
                         ),
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                    SizedBox(height: 25.0),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          side: BorderSide(
+                            color: Colors.grey.withOpacity(0.3),
+                            width: 1.0,
+                          ),
+                        ),
+                        elevation: 2.0,
+                        shadowColor: Colors.grey.withOpacity(0.5),
+                      ),
+                      child: Text(
+                        'Correo: estelaroldos2@gmail.com',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton.icon(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.green,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                          ),
+                          icon: Icon(Icons.edit),
+                          label: Text(
+                            'Editar',
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                        ElevatedButton.icon(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.blue,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                          ),
+                          icon: Icon(Icons.settings),
+                          label: Text(
+                            'Configuración',
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                        ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => login()),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.red,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                          ),
+                          icon: Icon(Icons.logout),
+                          label: Text(
+                            'Salir',
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -723,6 +726,15 @@ class Screen3 extends StatelessWidget {
     );
   }
 }
+
+class login extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+
 
 
 class Screen4 extends StatelessWidget {
@@ -773,7 +785,208 @@ class Screen4 extends StatelessWidget {
       ),
       drawer: Drawer(
         child: Container(
-          color: Colors.white, 
+          color: Colors.white,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 50.0,
+                      backgroundImage: AssetImage('images/product1.jpg'),
+                    ),
+                    SizedBox(height: 10.0),
+                    Text(
+                      'Me alegra tenerte aquí',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.home, color: Colors.black),
+                title: Text(
+                  'Inicio',
+                  style: TextStyle(color: Colors.black),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Screen1()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.shopping_cart, color: Colors.black),
+                title: Text(
+                  'Carrito',
+                  style: TextStyle(color: Colors.black),
+                ),
+                onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Screen2()),
+                    );
+                }
+              ),
+              ListTile(
+                  leading: Icon(Icons.person, color: Colors.black),
+                  title: Text(
+                    'Perfil',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Screen3()),
+                    );
+                  }
+                  ),
+              ListTile(
+                  leading: Icon(Icons.logout, color: Colors.black),
+                  title: Text(
+                    'Salir',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => login()),
+                    );
+                  }),
+            ],
+          ),
+        ),
+      ),
+      body: Container(
+        color: Colors.white,
+        child: SingleChildScrollView( // Agregado: Envuelve el ListView.builder con SingleChildScrollView
+          child: ListView.builder(
+            shrinkWrap: true, // Agregado: Para evitar desbordamiento en el contenido
+            physics: NeverScrollableScrollPhysics(), // Agregado: Para deshabilitar el desplazamiento del ListView.builder
+            itemCount: foodItems.length,
+            itemBuilder: (context, index) {
+              return Center(
+                child: Card(
+                  margin: EdgeInsets.all(40.0),
+                  shadowColor: Colors.grey,
+                  elevation: 5.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: 50.0,
+                          backgroundImage: AssetImage(foodItems[index].image),
+                        ),
+                        SizedBox(height: 20.0),
+                        Text(
+                          foodItems[index].description,
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 10.0),
+                        Text(
+                          '\$${foodItems[index].price}',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 20.0),
+                        ElevatedButton(
+                          onPressed: () {
+                            // Agregar lógica para agregar al carrito
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.blue,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                          ),
+                          child: Text(
+                            'Agregar al carrito',
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+class Screen5 extends StatelessWidget {
+  final List<FoodItem> foodItems = [
+    FoodItem(
+      image: 'images/food-1.jpg',
+      description: 'Pizza Margherita',
+      price: '12.99',
+    ),
+    FoodItem(
+      image: 'images/food-2.jpg',
+      description: 'Hamburguesa clásica',
+      price: '8.99',
+    ),
+    // Agrega más elementos aquí
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Yavi',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'Lobster',
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'Food',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 232, 153, 88),
+                  fontFamily: 'Lobster',
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      drawer: Drawer(
+        child: Container(
+          color: Colors.white,
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -845,64 +1058,120 @@ class Screen4 extends StatelessWidget {
       ),
       body: Container(
         color: Colors.white,
-        child: ListView.builder(
-          itemCount: foodItems.length,
-          itemBuilder: (context, index) {
-            return Center(
-              child: Card(
-                margin: EdgeInsets.all(40.0),
-                shadowColor: Colors.grey,
-                elevation: 5.0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        radius: 50.0,
-                        backgroundImage: AssetImage(foodItems[index].image),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: foodItems.length,
+                itemBuilder: (context, index) {
+                  return Center(
+                    child: Card(
+                      margin: EdgeInsets.all(40.0),
+                      shadowColor: Colors.grey,
+                      elevation: 5.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
-                      SizedBox(height: 20.0),
-                      Text(
-                        foodItems[index].description,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
+                      child: Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              radius: 50.0,
+                              backgroundImage:
+                                  AssetImage(foodItems[index].image),
+                            ),
+                            SizedBox(height: 20.0),
+                            Text(
+                              foodItems[index].description,
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 10.0),
+                            Text(
+                              '\$${foodItems[index].price}',
+                              style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(height: 20.0),
+                            ElevatedButton(
+                              onPressed: () {
+                                // Agregar lógica para agregar al carrito
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.blue,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                              ),
+                              child: Text(
+                                'Agregar al carrito',
+                                style: TextStyle(fontSize: 16.0),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(height: 10.0),
-                      Text(
-                        '\$${foodItems[index].price}',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
+                    ),
+                  );
+                },
+              ),
+              SizedBox(height: 20.0),
+              Container(
+                margin: EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'Selecciona la forma de pago:',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Lógica para procesar el pago en línea con tarjeta
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
                         ),
                       ),
-                      SizedBox(height: 20.0),
-                      ElevatedButton(
-                        onPressed: () {
-                          // Agregar lógica para agregar al carrito
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                        ),
-                        child: Text(
-                          'Agregar al carrito',
-                          style: TextStyle(fontSize: 16.0),
+                      child: Text(
+                        'Pagar en línea con tarjeta',
+                        style: TextStyle(fontSize: 16.0),
+                      ),
+                    ),
+                    SizedBox(height: 10.0),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Lógica para procesar el pago en efectivo
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
                         ),
                       ),
-                    ],
-                  ),
+                      child: Text(
+                        'Pagar en efectivo',
+                        style: TextStyle(fontSize: 16.0),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            );
-          },
+            ],
+          ),
         ),
       ),
     );
@@ -920,9 +1189,6 @@ class FoodItem {
     required this.price,
   });
 }
-
-
-
 
 class RoundedButtonWithIcon extends StatelessWidget {
   final IconData icon;
