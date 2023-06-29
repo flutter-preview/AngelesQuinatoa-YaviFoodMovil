@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project/auth/login.dart';
+import 'package:project/pages/home.dart';
+import 'package:email_validator/email_validator.dart';
+import 'package:project/services/register.api.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -9,167 +11,260 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  final FocusNode _emailFocusNode = FocusNode();
-  final FocusNode _passwordFocusNode = FocusNode();
-  final FocusNode _confirmPasswordFocusNode = FocusNode();
-  final FocusNode _addressFocusNode = FocusNode();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
   bool isPasswordVisible = false;
 
   @override
   void dispose() {
-    _emailFocusNode.dispose();
-    _passwordFocusNode.dispose();
-    _confirmPasswordFocusNode.dispose();
-    _addressFocusNode.dispose();
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    _addressController.dispose();
     super.dispose();
-    
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text('Registro'),
+        backgroundColor: Color.fromARGB(255, 239, 152, 71),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 50.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Center(
-                  child: CircleAvatar(
-                    radius: 100.0,
-                    backgroundColor: Color.fromARGB(255, 239, 152, 71),
-                    backgroundImage: AssetImage('images/principal.jpg'),
-                  ),
-                ),
-                const SizedBox(height: 16.0),
-                Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'YaviFood',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Lobster',
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Center(
+                    child: CircleAvatar(
+                      radius: 100.0,
+                      backgroundColor: Color.fromARGB(255, 239, 152, 71),
+                      backgroundImage: AssetImage('images/principal.jpg'),
                     ),
                   ),
-                ),
-                const SizedBox(height: 16.0),
-                Theme(
-                  data: ThemeData(
-                    primaryColor: Color(0xFFFFA07A),
-                    colorScheme: ColorScheme.fromSwatch().copyWith(
-                      primary: Color(0xFFFFA07A),
-                    ),
-                  ),
-                  child: TextField(
-                    enableInteractiveSelection: false,
-                    textCapitalization: TextCapitalization.characters,
-                    decoration: InputDecoration(
-                      hintText: 'E-mail',
-                      labelText: 'E-mail',
-                      suffixIcon: Icon(Icons.alternate_email),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                  ),
-                ),
-const SizedBox(height: 16.0),
-                Theme(
-                  data: ThemeData(
-                    primaryColor: Color(0xFFFFA07A),
-                    colorScheme: ColorScheme.fromSwatch().copyWith(
-                      primary: Color(0xFFFFA07A),
-                    ),
-                  ),
-                  child: TextField(
-                    enableInteractiveSelection: false,
-                    obscureText: !isPasswordVisible,
-                    textCapitalization: TextCapitalization.characters,
-                    decoration: InputDecoration(
-                      hintText: 'Password',
-                      labelText: 'PassWord',
-                      suffixIcon: Icon(Icons.visibility_off),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16.0),
-                Theme(
-                  data: ThemeData(
-                    primaryColor: Color(0xFFFFA07A),
-                    colorScheme: ColorScheme.fromSwatch().copyWith(
-                      primary: Color(0xFFFFA07A),
-                    ),
-                  ),
-                  child: TextField(
-                    enableInteractiveSelection: false,
-                    obscureText: !isPasswordVisible,
-                    textCapitalization: TextCapitalization.characters,
-                    decoration: InputDecoration(
-                      hintText: 'Confirm Password',
-                      labelText: 'Confirm Password',
-                      suffixIcon: Icon(Icons.visibility_off),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                  ),
-                ),
-                                const SizedBox(height: 16.0),
-                Theme(
-                  data: ThemeData(
-                    primaryColor: Color(0xFFFFA07A),
-                    colorScheme: ColorScheme.fromSwatch().copyWith(
-                      primary: Color(0xFFFFA07A),
-                    ),
-                  ),
-                  child: TextField(
-                    enableInteractiveSelection: false,
-                    textCapitalization: TextCapitalization.characters,
-                    decoration: InputDecoration(
-                      hintText: 'Direccion',
-                      labelText: 'Direccion',
-                      suffixIcon: Icon(Icons.location_on),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16.0),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFFFA07A),
-                  ),
-                  child: Text('Register'),
-                ),
-                const SizedBox(height: 16.0),
-                Container(
-                  alignment: Alignment.center,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => login()),
-                      );
-                    },
+                  const SizedBox(height: 16.0),
+                  Align(
+                    alignment: Alignment.center,
                     child: Text(
-                      '¿Ya tienes una cuenta? Inicia sesión',
+                      'YaviFood',
                       style: TextStyle(
                         color: Colors.black,
-                        decoration: TextDecoration.none,
+                        fontFamily: 'Lobster',
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 16.0),
+                  Theme(
+                    data: ThemeData(
+                      primaryColor: Color(0xFFFFA07A),
+                      colorScheme: ColorScheme.fromSwatch().copyWith(
+                        primary: Color(0xFFFFA07A),
+                      ),
+                    ),
+                    child: TextFormField(
+                      controller: _nameController,
+                      textCapitalization: TextCapitalization.words,
+                      decoration: InputDecoration(
+                        hintText: 'Nombre',
+                        labelText: 'Nombre',
+                        suffixIcon: Icon(Icons.person),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Por favor, ingresa un nombre';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+                  Theme(
+                    data: ThemeData(
+                      primaryColor: Color(0xFFFFA07A),
+                      colorScheme: ColorScheme.fromSwatch().copyWith(
+                        primary: Color(0xFFFFA07A),
+                      ),
+                    ),
+                    child: TextFormField(
+                      controller: _emailController,
+                      textCapitalization: TextCapitalization.characters,
+                      decoration: InputDecoration(
+                        hintText: 'E-mail',
+                        labelText: 'E-mail',
+                        suffixIcon: Icon(Icons.alternate_email),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Por favor, ingresa un correo electrónico';
+                        } else if (!EmailValidator.validate(value)) {
+                          return 'Por favor, ingresa un correo electrónico válido';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+                  Theme(
+                    data: ThemeData(
+                      primaryColor: Color(0xFFFFA07A),
+                      colorScheme: ColorScheme.fromSwatch().copyWith(
+                        primary: Color(0xFFFFA07A),
+                      ),
+                    ),
+                    child: TextFormField(
+                      controller: _passwordController,
+                      obscureText: !isPasswordVisible,
+                      textCapitalization: TextCapitalization.characters,
+                      decoration: InputDecoration(
+                        hintText: 'Contraseña',
+                        labelText: 'Contraseña',
+                        suffixIcon: IconButton(
+                          icon: isPasswordVisible
+                              ? Icon(Icons.visibility_off)
+                              : Icon(Icons.visibility),
+                          onPressed: () {
+                            setState(() {
+                              isPasswordVisible = !isPasswordVisible;
+                            });
+                          },
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Por favor, ingresa una contraseña';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+                  Theme(
+                    data: ThemeData(
+                      primaryColor: Color(0xFFFFA07A),
+                      colorScheme: ColorScheme.fromSwatch().copyWith(
+                        primary: Color(0xFFFFA07A),
+                      ),
+                    ),
+                    child: TextFormField(
+                      controller: _confirmPasswordController,
+                      obscureText: !isPasswordVisible,
+                      textCapitalization: TextCapitalization.characters,
+                      decoration: InputDecoration(
+                        hintText: 'Confirmar Contraseña',
+                        labelText: 'Confirmar Contraseña',
+                        suffixIcon: IconButton(
+                          icon: isPasswordVisible
+                              ? Icon(Icons.visibility_off)
+                              : Icon(Icons.visibility),
+                          onPressed: () {
+                            setState(() {
+                              isPasswordVisible = !isPasswordVisible;
+                            });
+                          },
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Por favor, confirma tu contraseña';
+                        } else if (value != _passwordController.text) {
+                          return 'Las contraseñas no coinciden';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+                  Theme(
+                    data: ThemeData(
+                      primaryColor: Color(0xFFFFA07A),
+                      colorScheme: ColorScheme.fromSwatch().copyWith(
+                        primary: Color(0xFFFFA07A),
+                      ),
+                    ),
+                    child: TextFormField(
+                      controller: _addressController,
+                      textCapitalization: TextCapitalization.sentences,
+                      decoration: InputDecoration(
+                        hintText: 'Dirección',
+                        labelText: 'Dirección',
+                        suffixIcon: Icon(Icons.location_on),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Por favor, ingresa una dirección';
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 16.0),
+                  ElevatedButton(
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        if (_passwordController.text != _confirmPasswordController.text) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Las contraseñas no coinciden.'),
+                            ),
+                          );
+                          return;
+                        }
+
+                        var success = await ApiService.registerUser(
+                          _nameController.text,
+                          _emailController.text,
+                          _passwordController.text,
+                          _confirmPasswordController.text,
+                          _addressController.text,
+                        );
+
+                        if (success) {
+                          print('Registro exitoso');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => homePages()),
+                          );
+                        } else {
+                          print('Error en el registro');
+                        }
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFFFA07A),
+                    ),
+                    child: Text('Registrar'),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
