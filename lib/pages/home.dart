@@ -515,6 +515,7 @@ class _Screen2State extends State<Screen2> {
 }
 
 
+
 class Screen3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -547,171 +548,173 @@ class Screen3 extends StatelessWidget {
           ),
         ),
       ),
-      body: Container(
-        color: Colors.white,
-        child: Center(
-          child: Card(
-            margin: EdgeInsets.all(40.0),
-            shadowColor: Colors.grey,
-            elevation: 5.0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 50.0,
-                    backgroundImage: AssetImage('../images/perfil.jpeg'),
-                  ),
-                  SizedBox(height: 20.0),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(
-                          color: Colors.grey.withOpacity(0.3),
-                          width: 1.0,
-                        ),
-                      ),
-                      elevation: 2.0,
-                      shadowColor: Colors.grey.withOpacity(0.5),
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.white,
+          child: Center(
+            child: Card(
+              margin: EdgeInsets.all(40.0),
+              shadowColor: Colors.grey,
+              elevation: 5.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 50.0,
+                      backgroundImage: AssetImage('../images/perfil.jpeg'),
                     ),
-                    child: Text(
-                      'Nombre: Estela Micaela',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 25.0),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(
-                          color: Colors.grey.withOpacity(0.3),
-                          width: 1.0,
-                        ),
-                      ),
-                      elevation: 2.0,
-                      shadowColor: Colors.grey.withOpacity(0.5),
-                    ),
-                    child: Text(
-                      'Apellidos: Roldos Montes',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 25.0),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(
-                          color: Colors.grey.withOpacity(0.3),
-                          width: 1.0,
-                        ),
-                      ),
-                      elevation: 2.0,
-                      shadowColor: Colors.grey.withOpacity(0.5),
-                    ),
-                    child: Text(
-                      'CI: 1234567987-6',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 25.0),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        side: BorderSide(
-                          color: Colors.grey.withOpacity(0.3),
-                          width: 1.0,
-                        ),
-                      ),
-                      elevation: 2.0,
-                      shadowColor: Colors.grey.withOpacity(0.5),
-                    ),
-                    child: Text(
-                      'Correo: estelaroldos2@gmail.com',
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton.icon(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.green,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
+                    SizedBox(height: 20.0),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          side: BorderSide(
+                            color: Colors.grey.withOpacity(0.3),
+                            width: 1.0,
                           ),
                         ),
-                        icon: Icon(Icons.edit),
-                        label: Text(
-                          'Editar',
-                          style: TextStyle(fontSize: 16.0),
+                        elevation: 2.0,
+                        shadowColor: Colors.grey.withOpacity(0.5),
+                      ),
+                      child: Text(
+                        'Nombre: Estela Micaela',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
                         ),
                       ),
-                      ElevatedButton.icon(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    SizedBox(height: 25.0),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          side: BorderSide(
+                            color: Colors.grey.withOpacity(0.3),
+                            width: 1.0,
                           ),
                         ),
-                        icon: Icon(Icons.settings),
-                        label: Text(
-                          'Configuración',
-                          style: TextStyle(fontSize: 16.0),
+                        elevation: 2.0,
+                        shadowColor: Colors.grey.withOpacity(0.5),
+                      ),
+                      child: Text(
+                        'Apellidos: Roldos Montes',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
                         ),
                       ),
-                      ElevatedButton.icon(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => login()),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    SizedBox(height: 25.0),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          side: BorderSide(
+                            color: Colors.grey.withOpacity(0.3),
+                            width: 1.0,
                           ),
                         ),
-                        icon: Icon(Icons.logout),
-                        label: Text(
-                          'Salir',
-                          style: TextStyle(fontSize: 16.0),
+                        elevation: 2.0,
+                        shadowColor: Colors.grey.withOpacity(0.5),
+                      ),
+                      child: Text(
+                        'CI: 1234567987-6',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
                         ),
                       ),
-                    ],
-                  ),
-                ],
+                    ),
+                    SizedBox(height: 25.0),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          side: BorderSide(
+                            color: Colors.grey.withOpacity(0.3),
+                            width: 1.0,
+                          ),
+                        ),
+                        elevation: 2.0,
+                        shadowColor: Colors.grey.withOpacity(0.5),
+                      ),
+                      child: Text(
+                        'Correo: estelaroldos2@gmail.com',
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton.icon(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.green,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                          ),
+                          icon: Icon(Icons.edit),
+                          label: Text(
+                            'Editar',
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                        ElevatedButton.icon(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.blue,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                          ),
+                          icon: Icon(Icons.settings),
+                          label: Text(
+                            'Configuración',
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                        ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => login()),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.red,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                          ),
+                          icon: Icon(Icons.logout),
+                          label: Text(
+                            'Salir',
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -720,6 +723,15 @@ class Screen3 extends StatelessWidget {
     );
   }
 }
+
+class login extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+
 
 
 class Screen4 extends StatelessWidget {
@@ -770,7 +782,7 @@ class Screen4 extends StatelessWidget {
       ),
       drawer: Drawer(
         child: Container(
-          color: Colors.white, 
+          color: Colors.white,
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -842,64 +854,68 @@ class Screen4 extends StatelessWidget {
       ),
       body: Container(
         color: Colors.white,
-        child: ListView.builder(
-          itemCount: foodItems.length,
-          itemBuilder: (context, index) {
-            return Center(
-              child: Card(
-                margin: EdgeInsets.all(40.0),
-                shadowColor: Colors.grey,
-                elevation: 5.0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        radius: 50.0,
-                        backgroundImage: AssetImage(foodItems[index].image),
-                      ),
-                      SizedBox(height: 20.0),
-                      Text(
-                        foodItems[index].description,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
+        child: SingleChildScrollView( // Agregado: Envuelve el ListView.builder con SingleChildScrollView
+          child: ListView.builder(
+            shrinkWrap: true, // Agregado: Para evitar desbordamiento en el contenido
+            physics: NeverScrollableScrollPhysics(), // Agregado: Para deshabilitar el desplazamiento del ListView.builder
+            itemCount: foodItems.length,
+            itemBuilder: (context, index) {
+              return Center(
+                child: Card(
+                  margin: EdgeInsets.all(40.0),
+                  shadowColor: Colors.grey,
+                  elevation: 5.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: 50.0,
+                          backgroundImage: AssetImage(foodItems[index].image),
                         ),
-                      ),
-                      SizedBox(height: 10.0),
-                      Text(
-                        '\$${foodItems[index].price}',
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 20.0),
-                      ElevatedButton(
-                        onPressed: () {
-                          // Agregar lógica para agregar al carrito
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
+                        SizedBox(height: 20.0),
+                        Text(
+                          foodItems[index].description,
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        child: Text(
-                          'Agregar al carrito',
-                          style: TextStyle(fontSize: 16.0),
+                        SizedBox(height: 10.0),
+                        Text(
+                          '\$${foodItems[index].price}',
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ],
+                        SizedBox(height: 20.0),
+                        ElevatedButton(
+                          onPressed: () {
+                            // Agregar lógica para agregar al carrito
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.blue,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                          ),
+                          child: Text(
+                            'Agregar al carrito',
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );
@@ -911,14 +927,10 @@ class FoodItem {
   final String description;
   final String price;
 
-  FoodItem({
-    required this.image,
-    required this.description,
-    required this.price,
-  });
+  FoodItem({required this.image, 
+  required this.description, 
+  required this.price});
 }
-
-
 
 
 class RoundedButtonWithIcon extends StatelessWidget {
