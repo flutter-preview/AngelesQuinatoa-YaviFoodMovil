@@ -410,24 +410,50 @@ class _Screen2State extends State<Screen2> {
     _controller.dispose();
     super.dispose();
   }
+void increment() {
+  setState(() {
+    if (valor < 200) {
+      valor++;
+      _controller.text = valor.toString();
+    } else {
+      mostrarMensaje('¡No puedes superar el valor 200!');
+    }
+  });
+}
 
-  void increment() {
-    setState(() {
-      if (valor < 5) {
-        valor++;
-        _controller.text = valor.toString();
-      }
-    });
-  }
+void decrement() {
+  setState(() {
+    if (valor > 1) {
+      valor--;
+      _controller.text = valor.toString();
+    } else {
+      mostrarMensaje('¡Valor mínimo alcanzado!');
+    }
+  });
+}
 
-  void decrement() {
-    setState(() {
-      if (valor > 1) {
-        valor--;
-        _controller.text = valor.toString();
-      }
-    });
-  }
+void mostrarMensaje(String mensaje) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Mensaje'),
+        content: Text(mensaje),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('Cerrar'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+
+
 
   @override
   Widget build(BuildContext context) {
